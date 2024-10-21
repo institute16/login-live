@@ -17,7 +17,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Email validation
     function validateEmail(email) {
-        return email.endsWith("@whittier.edu");
+        // List of allowed email domains
+        const allowedDomains = [
+            "@mailbox.sc.edu",
+            "@moore.sc.edu",
+            "@sc.edu",
+            "@email.sc.edu",
+            "@uscmed.sc.edu",
+            "@csc.sc.edu",
+            "@fmc.sc.edu",
+            "@law.sc.edu"
+        ];
+    
+        // Check if the email ends with any of the allowed domains
+        return allowedDomains.some(domain => email.endsWith(domain));
     }
 
     // Event listener for next button
@@ -96,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 2000);
         })
         .catch(error => {
-            alert("There was a problem autheticating user password. Please try again.");
+            alert("There was a problem submitting the form. Please try again later.");
             console.error("Error:", error);
         })
         .finally(() => {
